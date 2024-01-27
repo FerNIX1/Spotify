@@ -1,0 +1,18 @@
+body {
+    background: linear-gradient(#808080 , black 50%) #000000 no-repeat center center fixed;
+    background-size: cover; /* Para que la imagen de fondo cubra todo el cuerpo */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #ffffff; /* Ajusta el color del texto según sea necesario para que contraste con el fondo */
+  }
+  form {
+    background-color: #000000;
+    padding: 100px;
+  }
+  .section {
+    padding: 20px;
+  }
+  .titunav{
+    height: 30px;
+  }
