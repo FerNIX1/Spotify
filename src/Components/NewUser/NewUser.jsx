@@ -2,25 +2,22 @@ import { EmailValidation, MinPassword, MaxPassword } from "../../Utils/Validator
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { app } from "../firebase";
-
+import { app } from "../firebaseform";
+import {getAuth,createUserWithEmailAndPassword} from "firebase/auth";
 export const NewUser = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [error, setError] = useState();
-  const navigate = useNavigate();
-  const auth = getAuth(app); // Obtén la instancia de autenticación de Firebase
+  const auth = getAuth(app);
+ const navigate = useNavigate();
+ const createUser=async(data)=>{
+     try {
+          await createUserWithEmailAndPassword(auth,data.email,data.password);
+         navigate("/");
+     } catch (error) {
+         setError(error.message.replace('FireBase','E-Comerce error'));
+     }
+ };
   
-  const createUser = async (data) => {
-    try {
-      // Crear el usuario utilizando Firebase
-       await createUserWithEmailAndPassword(auth, data.email, data.password);
-      // Redirigir al usuario a la página de login
-      navigate("/login");
-    } catch (error) {
-      setError(error.message);
-    }
-  };
 
   return (
     <>
